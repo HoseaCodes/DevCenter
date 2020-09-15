@@ -6,22 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.decorators import login_required
 
-<<<<<<< HEAD
-
-
-# Create your views here.
-class Profile():
-    def __init__(self, name, email, age):        
-        self.name = name 
-        self.email = email
-        self.age = age
-
-profiles = [
-    Profile('Austin', 'austin@example.com', 33),
-    Profile('Dom', 'Dom@example.com', 28),
-    Profile('Diego', 'Diego@example.com', 30),
-]
-=======
 from .models import Profile, Article
 
 # Create your views here.
@@ -36,7 +20,6 @@ from .models import Profile, Article
 #     Profile('Dom', 'Dom@example.com', 28),
 #     Profile('Diego', 'Diego@example.com', 30),
 # ]
->>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
 
 def home(request):
     return render(request, 'home.html')
