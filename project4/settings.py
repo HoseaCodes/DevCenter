@@ -10,10 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-<<<<<<< HEAD
-from decouple import config
-=======
->>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,11 +20,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
-SECRET_KEY = config('SECRET_KEY')
-=======
 SECRET_KEY = 'u)v&yjfe$dnp2p5ti%7*_g5zp-$_ivix4%4+ty571h-xs%5#t+'
->>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
