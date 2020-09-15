@@ -28,10 +28,6 @@ def about(request):
     return render(request, 'about.html')
 
 def profiles_index(request):
-<<<<<<< HEAD
-    return render(request, 'profiles/index.html', {'profiles': profiles})
-
-=======
     profiles = Profile.objects.filter(user=request.user)
     return render(request, 'profiles/index.html', {'profiles': profiles})
 
@@ -41,7 +37,6 @@ def profiles_index(request):
 #         'profile': profile,
 #     })
 
->>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
 def signup(request):
     error_message = ''
     if request.method == 'POST':
