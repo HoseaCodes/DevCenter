@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
@@ -28,9 +30,13 @@ def about(request):
     return render(request, 'about.html')
 
 def profiles_index(request):
-    profiles = Profile.objects.filter(user=request.user)
+    profiles = Profile.objects.all()
+    # profiles = Profile.objects.filter(user=request.user)
     return render(request, 'profiles/index.html', {'profiles': profiles})
 
+def profiles_detail(request, profile_id):
+  profile = Profile.objects.get(id=profile_id)
+  return render(request, 'profiles/detail.html', { 'profile': profile })
 # def profiles_detail(request, profile_id):
 #     profile = Profile.objects.get(id=profile_id)
 #     return render(request, 'profiles/detail.html', {
@@ -50,3 +56,9 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+class ProfileCreate( CreateView):
+    model = Profile
+    fields = ['name','breed', 'description', 'age'] 
+
+    
