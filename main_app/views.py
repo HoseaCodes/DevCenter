@@ -64,7 +64,7 @@ class ProfileCreate( CreateView):
 
 class ProfileUpdate( UpdateView):
     model = Profile
-    fields = ['breed', 'description', 'age']
+    fields = ['bio', 'location', 'age']    
 
 class ProfileDelete( DeleteView):
     model = Profile
