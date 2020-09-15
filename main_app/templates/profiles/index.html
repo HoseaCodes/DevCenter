@@ -6,8 +6,13 @@
 {% for profile in profiles %}
   <div class="card">
     <div class="card-content">
+<<<<<<< HEAD
       <span class="card-title">{{ profile.name }}</span>
       <p>Email: {{ profile.email }}</p>
+=======
+      <span class="card-title">{{ user.first_name }}</span>
+      <p>Email: {{ user.email }}</p>
+>>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
       {% if profile.age > 0 %}
         <p>Age: {{ profile.age }}</p>
       {% else %}

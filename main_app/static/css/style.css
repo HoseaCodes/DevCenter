@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -7,6 +8,66 @@ body {
   main {
     flex: 1 0 auto;
   }
+=======
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  
+}
+
+  .arangement {
+    display: flex;
+    flex: 1 0 auto;
+  } 
+
+  .nav {
+    background-color: #004d40 ;
+    /* background-color: rgb(37, 95, 99); */
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .base-line {
+    background-color: black;
+  }
+
+  .base-header {
+    border-color: #206a5d;
+    border: #206a5d;
+    text-decoration: none;
+    background-color: #206a5d;
+    color: #ebecf1;
+    padding: 30px .5px 30px .5px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 50%;
+    margin: 40px;
+  }
+  .base-header:hover {
+    text-align: center;
+    border-color: #206a5d;
+    border: #206a5d;
+    background-color: #206a5d;
+    color: #ebecf1;
+    padding: 32px .8px 32px .8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 50%;
+    margin: 40px;
+    cursor: pointer;
+  }
+  .base-a {
+  text-decoration: none;
+  color: #CCCCCC;
+  }
+  .base-a:hover {
+    text-decoration: none;
+    color: #CCCCCC;
+    }
+>>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
   
   footer {
     padding-top: 0;

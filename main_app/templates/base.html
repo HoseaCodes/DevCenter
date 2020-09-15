@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,4 +35,40 @@
         <div class="right">All Rights Reserved, &copy; 2020 TeamAdd &nbsp;</div>
     </footer>
 </body>
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Team ADD</title>
+
+</head>
+
+<body>
+    <div class="arangement">
+        <ul class="nav flex-column">
+            <li><a class="navbar-brand" href="{% url 'home' %}"> <img src="../static/css/logo.png" alt="logo"
+                        width="100px" height="100px"> &nbsp;&nbsp;Logo</a></li>
+            <hr class="base-line">
+            <li class="base-header"><a class="base-a" href="{% url 'about' %}">About</a></li>
+            <li class="base-header"><a class="base-a" href="{% url 'index' %}">My Profile</a></li>
+            <li class="base-header"><a class="base-a" href="{% url 'logout' %}">Logout</a></li>
+            <li class="base-header"><a class="base-a" href="{% url 'login' %}">Login</a></li>
+            <li class="base-header"><a class="base-a" href="{% url 'signup' %}">Sign Up</a></li>
+        </ul>
+        <main class="container">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <footer class="page-footer teal darken-4">
+        <div class="right">All Rights Reserved, &copy; 2020 TeamAdd &nbsp;</div>
+    </footer>
+</body>
+
+>>>>>>> 5532d2b9005808a2a0168b6907079b70f3536fad
 </html>
