@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DeleteView, ListView 
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic  import DetailView, ListView
@@ -8,6 +10,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Profile, Article
 
@@ -69,3 +72,23 @@ class ProfileUpdate( UpdateView):
 class ProfileDelete( DeleteView):
     model = Profile
     success_url = '/profiles/'
+    
+def articles_index(request):
+    articles = Article.objects.all()
+    return render(request, 'articles/index.html', { 'articles': articles })
+
+def articles_detail(request, article_id):
+    article = Article.objects.get(id=article_id)
+    return render(request, 'articles/detail.html', { 'article': article })
+
+class ArticleCreate(CreateView):
+    model = Article
+    fields = '__all__'
+
+class ArticleUpdate(UpdateView):
+    model = Article
+    fields = '__all__'
+
+class ArticleDelete(DeleteView):
+    model = Article
+    success_url = '/articles/'

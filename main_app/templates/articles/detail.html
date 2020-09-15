@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    <span>{{ article.name }}</span>
+    <span>{{ article.content }}</span>
+</div>
+
+<div>
+    <a href="{% url 'articles_update' article.id %}">Edit</a>
+    <a href="{% url 'articles_delete' article.id %}">Delete</a>
+</div>
+
+{% endblock %}
