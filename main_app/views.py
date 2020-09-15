@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic  import DetailView, ListView
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -59,6 +60,12 @@ def signup(request):
 
 class ProfileCreate( CreateView):
     model = Profile
-    fields = ['name','breed', 'description', 'age'] 
+    fields = '__all__' 
 
-    
+class ProfileUpdate( UpdateView):
+    model = Profile
+    fields = ['breed', 'description', 'age']
+
+class ProfileDelete( DeleteView):
+    model = Profile
+    success_url = '/profiles/'
