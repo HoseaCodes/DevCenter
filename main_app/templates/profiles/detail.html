@@ -8,9 +8,8 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{ user.first_name }} {{ user.last_name }}</span>
-                <p> Location: {{ profile.location }}</p>
-                <p> Bio: {{ profile.bio }}</p>
-                {% if cat.age > 0 %}
+
+                {% if profile.age > 0 %}
                 <p>Age: {{ profile.age }}</p>
                 {% else %}
                 <p>Age: Baby</p>
