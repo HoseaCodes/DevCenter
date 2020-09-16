@@ -8,6 +8,35 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Profile, Article
 
+import requests
+
+
+def github(request):
+    search_result = {}
+    repolist = []
+    if 'username' in request.GET:
+        username = request.GET['username']
+        url = 'https://api.github.com/users/%s' % username 
+        response = requests.get(url)
+        search_was_successful = (response.status_code == 200)  # 200 = SUCCESS
+        search_result = response.json()
+        search_result['success'] = search_was_successful
+        search_result['rate'] = {
+            'limit': response.headers['X-RateLimit-Limit'],
+            'remaining': response.headers['X-RateLimit-Remaining'],
+        }
+        response = requests.get(search_result['repos_url'])
+        repolist = response.json()
+    # print(search_result)
+    return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
+
+
+
+
+
+
+
+
 # Create your views here.
 # class Profile():
 #     def __init__(self, name, email, age):        
