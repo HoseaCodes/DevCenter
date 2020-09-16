@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>GitHub API</h2>
+  <form method="get">
+    <input type="text" name="username">
+    <button type="submit">search on github</button>
+  </form>
+  {% if search_result %}
+    {% if search_result.success %}
+      <ul>
+        <li><img src={{search_result.avatar_url}} alt="">
+        <li><strong>{{ search_result.name|default_if_none:search_result.login }}</strong>
+        <li><strong>{{ search_result.public_repos }}</strong> public repositories.</li>
+        <li><strong>Location: {{ search_result.location}}</strong></li>
+        <li><strong>Blog: {{ search_result.blog}}</strong></li>
+        <li><strong>Bio: {{ search_result.bio}}</strong></li>
+      </ul>
+      <ul>
+      {% for repo in repolist %}
+        <li ><a href={{repo.html_url}}>{{repo.name}}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p><em>{{ search_result.message }}</em></p>
+    {% endif %}
+    <p>Rate limit: {{ search_result.rate.remaining }}/{{ search_result.rate.limit }}</p>
+  {% endif %}
+{% endblock %}
