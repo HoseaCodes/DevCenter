@@ -11,8 +11,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Profile, Article
 
-<<<<<<< HEAD
-=======
 import requests
 
 
@@ -55,7 +53,6 @@ def github(request):
 #     Profile('Diego', 'Diego@example.com', 30),
 # ]
 
->>>>>>> 2a6a23718be8fac225d3bb18122e35b9a59bc174
 def home(request):
     return render(request, 'home.html')
 
