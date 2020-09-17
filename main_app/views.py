@@ -9,10 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-<<<<<<< HEAD
-from .models import Profile, Article
-import json
-=======
 from .models import Profile, Article, Photo
 from django.contrib.auth.models import User
 
@@ -20,15 +16,10 @@ from django import forms
 
 import uuid
 import boto3
->>>>>>> master
 import requests
 
 
 
-<<<<<<< HEAD
-
-
-=======
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'teamadd'
 
@@ -47,7 +38,6 @@ def add_photo(request, profile_id):
     return redirect('detail', profile_id=profile_id)
 
  
->>>>>>> master
 def github(request):
     search_result = {}
     repolist = []
@@ -78,37 +68,6 @@ def github(request):
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
 
 
-<<<<<<< HEAD
-    # if 'fname' in request.GET:
-    #     fname = request.POST('fname')
-    #     print(f'username: ', fname)
-    #     user = social.extra_data['login']
-    #     social = user.social_auth.get(provider='oauth')
-    #     reponame = request.POST['fname']
-    #     access_token = social.extra_data['access_token']
-    #     headers = {'access_token': access_token}
-    #     response = requests.post('https://api.github.com/user/repos',  data = {'name': reponame}, headers = headers)
-    # return render(request, 'core/create_repo.html', {'repo': repo})  
-
-
-
-
-
-# Create your views here.
-# class Profile():
-#     def __init__(self, name, email, age):        
-#         self.name = name 
-#         self.email = email
-#         self.age = age
-
-# profiles = [
-#     Profile('Austin', 'austin@example.com', 33),
-#     Profile('Dom', 'Dom@example.com', 28),
-#     Profile('Diego', 'Diego@example.com', 30),
-# ]
-
-=======
->>>>>>> master
 def home(request):
     return render(request, 'home.html')
 
