@@ -13,13 +13,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Profile, Article
-
+import json
 import requests
+
+
+
 
 
 def github(request):
     search_result = {}
     repolist = []
+    
     if 'username' in request.GET:
         username = request.GET['username']
         url = 'https://api.github.com/users/%s' % username 
@@ -33,11 +37,29 @@ def github(request):
         }
         response = requests.get(search_result['repos_url'])
         repolist = response.json()
-    # print(search_result)
+    # elif 'fname' in request.GET:
+    #     fname = request.GET['fname']
+    #     print(f'username: ', fname)
+    #     user = social.extra_data['login']
+    #     social = user.social_auth.get(provider='oauth')
+    #     reponame = request.POST['fname']
+    #     access_token = social.extra_data['access_token']
+    #     headers = {'access_token': access_token}
+    #     response = requests.post('https://api.github.com/user/repos', scope = {'public_repo': public_repo},  data = {'name': reponame}, headers = headers)
+    #     # response = requests.post('https://api.github.com/user/Burgosdss/repos?access_token=a4aff9812f4f9a3582457a4f023a2fe91a011015')
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
 
 
-
+    # if 'fname' in request.GET:
+    #     fname = request.POST('fname')
+    #     print(f'username: ', fname)
+    #     user = social.extra_data['login']
+    #     social = user.social_auth.get(provider='oauth')
+    #     reponame = request.POST['fname']
+    #     access_token = social.extra_data['access_token']
+    #     headers = {'access_token': access_token}
+    #     response = requests.post('https://api.github.com/user/repos',  data = {'name': reponame}, headers = headers)
+    # return render(request, 'core/create_repo.html', {'repo': repo})  
 
 
 

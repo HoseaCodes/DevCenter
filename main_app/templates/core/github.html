@@ -3,9 +3,11 @@
 {% block content %}
   <h2>GitHub API</h2>
   <form method="get">
+    {% csrf_token %}
     <input type="text" name="username">
     <button type="submit">search on github</button>
   </form>
+  <a href="{% url 'social:begin' 'github' %}">Sign in with Github</a>
   {% if search_result %}
     {% if search_result.success %}
       <ul>
@@ -26,4 +28,11 @@
     {% endif %}
     <p>Rate limit: {{ search_result.rate.remaining }}/{{ search_result.rate.limit }}</p>
   {% endif %}
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <label >Repo name:</label><br>
+    <input type="text" name="fname"><br>
+    <button type="submit">Create Repo</button>
+  </form> 
 {% endblock %}
