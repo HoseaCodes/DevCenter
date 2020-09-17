@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Login</h1>
+<h1>Log In</h1>
 
 <form action="{% url 'login' %}" method="post">
     {% csrf_token %}
@@ -10,4 +10,4 @@
     <input type="hidden" name="next" value="{{ next }}">
 </form>
 
-{% endblock %} 
+{% endblock %}

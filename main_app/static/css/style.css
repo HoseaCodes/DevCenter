@@ -4,6 +4,12 @@ body {
   min-height: 100vh;  
 }
 
+.registration {
+  padding-top: 10rem;
+}
+.card {
+  padding: 10px;
+}
   .arangement {
     display: flex;
     flex: 1 0 auto;
