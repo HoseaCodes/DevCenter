@@ -3,12 +3,6 @@ from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
 
-<<<<<<< HEAD
-# Create your models here.
-#article test
-
-=======
->>>>>>> e5af42f7b8433240dd0e01e6b1d6890339b012dd
 class Article(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField()
@@ -24,11 +18,7 @@ class Article(models.Model):
         ordering = ['-date']
 
 class Profile(models.Model):
-<<<<<<< HEAD
-    bio = models.CharField(max_length=200)
-=======
     user = models.ForeignKey(User, on_delete=models.CASCADE)
->>>>>>> e5af42f7b8433240dd0e01e6b1d6890339b012dd
     location = models.CharField(max_length=100)
     age = models.IntegerField()
     bio = models.TextField(max_length=100)

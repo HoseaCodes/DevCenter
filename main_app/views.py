@@ -71,13 +71,8 @@ def profiles_index(request):
 
 @login_required
 def profiles_detail(request, profile_id):
-<<<<<<< HEAD
-  profile = Profile.objects.get(id=profile_id)
-  return render(request, 'profiles/detail.html', { 'profile': profile })
-=======
     profile = Profile.objects.get(id=profile.user.id)
     return render(request, 'profiles/detail.html', { 'profile': profile })
->>>>>>> e5af42f7b8433240dd0e01e6b1d6890339b012dd
 
 
 def signup(request):
