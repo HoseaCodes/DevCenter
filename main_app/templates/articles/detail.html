@@ -2,8 +2,10 @@
 {% block content %}
 
 <div>
-    <span>{{ article.name }}</span>
-    <span>{{ article.content }}</span>
+    <span>{{ article.name|default:"No Articles Yet"  }}</span>
+    <span>{{ article.date|date:"D d M Y" }}</span>
+    <span>{{ article.content|default:"No Content"  }}</span>
+    <span>Word Count: {{ article.content|wordcount }}</span>
 </div>
 
 <div>
