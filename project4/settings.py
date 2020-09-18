@@ -83,9 +83,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_user',
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
-    'social_core.pipeline.user.user_details',
-    'social_auth.backends.pipeline.misc.save_status_to_session',
-    
+    'social_core.pipeline.user.user_details',    
 )
 
 # Database
