@@ -23,6 +23,7 @@ import requests
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'teamadd'
 
+
 def add_photo(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -37,7 +38,7 @@ def add_photo(request, profile_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', profile_id=profile_id)
 
- 
+    
 def github(request):
     search_result = {}
     repolist = []
@@ -55,17 +56,22 @@ def github(request):
         }
         response = requests.get(search_result['repos_url'])
         repolist = response.json()
-    # elif 'fname' in request.GET:
-    #     fname = request.GET['fname']
-    #     print(f'username: ', fname)
-    #     user = social.extra_data['login']
-    #     social = user.social_auth.get(provider='oauth')
-    #     reponame = request.POST['fname']
-    #     access_token = social.extra_data['access_token']
-    #     headers = {'access_token': access_token}
-    #     response = requests.post('https://api.github.com/user/repos', scope = {'public_repo': public_repo},  data = {'name': reponame}, headers = headers)
-    #     # response = requests.post('https://api.github.com/user/Burgosdss/repos?access_token=a4aff9812f4f9a3582457a4f023a2fe91a011015')
+    elif 'repo_name' in request.POST:
+        repo_name = ['repo_name']
+        user = User.objects.all()
+        social = user.social_auth.get(provider='github')
+        response = requests.GET('https://api.github.com/user/repos', params={'access_token': social.extra_data['access_token']})
+        
+        # access_token = extra_data['access_token']
+        # headers = {'Bearer': '931671c469eb863b3d4d469a48b18b1960130095'}
+        # response = requests.post('https://api.github.com/user/repos',   data = {'name': repo_name}, headers = headers)
+        # payload = { 'name': repo_name, 'headers': headers, 'user': 'username'}
+        # payload =  {"login": "Burgosdss", "access_token": "931671c469eb863b3d4d469a48b18b1960130095", "token_type": "bearer", "name": repo_name}
+        # response = requests.post('https://api.github.com/user/repos',   data = payload)
+        # response = requests.post('https://api.github.com/user/Burgosdss/repos?access_token=931671c469eb863b3d4d469a48b18b1960130095')
+        print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
+
 
 
 def home(request):

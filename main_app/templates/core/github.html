@@ -2,7 +2,7 @@
 
 {% block content %}
   <h2>GitHub API</h2>
-  <form method="get">
+  <form action="/github" method="get">
     {% csrf_token %}
     <input type="text" name="username">
     <button type="submit">search on github</button>
@@ -29,10 +29,10 @@
     <p>Rate limit: {{ search_result.rate.remaining }}/{{ search_result.rate.limit }}</p>
   {% endif %}
 
-  <form action="" method="POST">
+  <form action="/github/" method="POST">
     {% csrf_token %}
     <label >Repo name:</label><br>
-    <input type="text" name="fname"><br>
+    <input type="text" name="repo_name"><br>
     <button type="submit">Create Repo</button>
   </form> 
 {% endblock %}

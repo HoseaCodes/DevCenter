@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'project4.urls'
@@ -74,6 +76,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project4.wsgi.application'
 
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_auth.backends.pipeline.misc.save_status_to_session',
+    
+)
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -126,13 +139,19 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/profiles/'
 LOGOUT_REDIRECT_URL = '/'
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
+    
+    
 )
 
-
-SOCIAL_AUTH_GITHUB_KEY = '73b9f341faeccab50c96'
-SOCIAL_AUTH_GITHUB_SECRET = 'be8eccfb5de453befa54fcde5b76775dc15b5ee8'
+SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['key']
+SOCIAL_AUTH_GITHUB_KEY = '7ea23b3dc6867ae038b6'
+SOCIAL_AUTH_GITHUB_SECRET = 'b3c5f81eac8e62f228ce3f4739eedb10ab332641'
