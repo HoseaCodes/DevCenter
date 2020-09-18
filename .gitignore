@@ -1,6 +1,7 @@
 .npm/*
 __pycache__/
 *.pyc
+postgresql/
 
 # Django #
 *.log
