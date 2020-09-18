@@ -3,7 +3,9 @@
 {% load static %}
 
 <div class="registration">
-    <h1>Create Account - Dev Centeral</h1>
+    <a class="navbar-brand" href="{% url 'home' %}"> <img src="{{ myphoto }}" alt="logo" width="100px" height="100px">
+        &nbsp;&nbsp;</a>
+    <h1 class="signup-h1">Create Account - Dev Centeral</h1>
     <div class="card">
         <!-- how to send custome error messages in line -->
         {% if error_message %} <p class="red-text">{{ error_message }}</p> {% endif %}

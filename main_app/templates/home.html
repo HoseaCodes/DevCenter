@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1> Welcome to DevCenter</h1>
-<hr />
-{% if user.is_authenticated %}
-<p>You are now logged in to your account.</p>
-<button><a href="{% url 'logout' %}">Logout</a></button>
-{% else %}
-<p>Lets log in and get started!</p>
-<button><a href="{% url 'login' %}">Login</a></button>
-<br>
-<p>No account, no problem.</p>
-<button><a href="{% url 'signup' %}">Sign Up</a></button>
 
-{% endif %}
+
+<a class="navbar-brand" href="{% url 'home' %}"> <img src="{{ myphoto }}" alt="logo" width="100px" height="100px">
+    &nbsp;&nbsp;</a>
+<div class="home">
+    <h1> Welcome to DevCenter</h1>
+    <hr />
+    {% if user.is_authenticated %}
+    <p>You are now logged in to your account.</p>
+    <button class="btn home-btn"><a href="{% url 'logout' %}">Logout</a></button>
+    {% else %}
+    <p>Lets log in and get started!</p>
+
+    <button class="btn home-btn"><a href="{% url 'login' %}">Login</a></button>
+    <div class="basic">
+    </div>
+    <br>
+    <p>No account, no problem.</p>
+    <button class="btn home-btn"><a href="{% url 'signup' %}">Sign Up</a></button>
+    {% endif %}
+
+</div>
+
 
 
 {% endblock %}
