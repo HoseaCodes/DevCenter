@@ -77,13 +77,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project4.wsgi.application'
 
 SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.social_auth.social_details',
-    'social_core.pipeline.social_auth.social_uid',
-    'social_core.pipeline.social_auth.auth_allowed',
-    'social_core.pipeline.social_auth.social_user',
-    'social_core.pipeline.social_auth.associate_user',
-    'social_core.pipeline.social_auth.load_extra_data',
-    'social_core.pipeline.user.user_details',    
+'social_core.pipeline.social_auth.social_details',
+'social_core.pipeline.social_auth.social_uid',
+'social_core.pipeline.social_auth.auth_allowed',
+'social_core.pipeline.social_auth.social_user',
+'social_core.pipeline.social_auth.associate_user',
+'social_core.pipeline.social_auth.load_extra_data',
+'social_core.pipeline.user.user_details',
 )
 
 # Database
@@ -146,10 +146,11 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
-    
-    
 )
 
-SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['key']
+SOCIAL_AUTH_GITHUB_SCOPE = ['public_repo']
+SOCIAL_AUTH_GITHUB_AUTH_EXTRA_ARGUMENTS: {"access_type: offline"}
 SOCIAL_AUTH_GITHUB_KEY = '7ea23b3dc6867ae038b6'
 SOCIAL_AUTH_GITHUB_SECRET = 'b3c5f81eac8e62f228ce3f4739eedb10ab332641'
+SOCIAL_AUTH_LOGIN_FUNCTION = 'github.auth.login_user'
+SOCIAL_AUTH_LOGGEDIN_FUNCTION = 'github.auth.login_required'

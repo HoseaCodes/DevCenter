@@ -13,10 +13,12 @@ from .models import Profile, Article, Photo
 from django.contrib.auth.models import User
 
 from django import forms
-
+from social_django.utils import load_strategy
 import uuid
 import boto3
-import requests
+import requests 
+import json
+from django.http import JsonResponse
 
 
 
@@ -38,7 +40,7 @@ def add_photo(request, profile_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', profile_id=profile_id)
 
-    
+   
 def github(request):
     search_result = {}
     repolist = []
@@ -56,24 +58,24 @@ def github(request):
         }
         response = requests.get(search_result['repos_url'])
         repolist = response.json()
-    elif 'repo_name' in request.POST:
-        repo_name = ['repo_name']
-        user = User.objects.all()
-        social = user.social_auth.get(provider='github')
-        response = requests.GET('https://api.github.com/user/repos', params={'access_token': social.extra_data['access_token']})
-        
-        # access_token = extra_data['access_token']
-        # headers = {'Bearer': '931671c469eb863b3d4d469a48b18b1960130095'}
-        # response = requests.post('https://api.github.com/user/repos',   data = {'name': repo_name}, headers = headers)
-        # payload = { 'name': repo_name, 'headers': headers, 'user': 'username'}
-        # payload =  {"login": "Burgosdss", "access_token": "931671c469eb863b3d4d469a48b18b1960130095", "token_type": "bearer", "name": repo_name}
-        # response = requests.post('https://api.github.com/user/repos',   data = payload)
-        # response = requests.post('https://api.github.com/user/Burgosdss/repos?access_token=931671c469eb863b3d4d469a48b18b1960130095')
+    elif 'name' in request.POST:
+        name = request.POST['name']
+        social = request.user.social_auth.values_list()
+        #print(social)
+        # print(((social[0])[4])['login'])
+        # print(((social[0])[4])['access_token'])
+        # url = 'https://api.github.com/user/repos'
+        # headers = {}
+        payload = { 'name': name }
+        # response = requests.post('https://api.github.com/user/repos', data=payload, headers=headers)
+        token = ((social[0])[4])['access_token']
+        github_user = ((social[0])[4])['login']
+        response= requests.post('https://api.github.com/' + 'user/repos', auth=(github_user, token), data=json.dumps(payload))
         print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
-
-
-
+      
+    
+    
 def home(request):
     return render(request, 'home.html')
 
