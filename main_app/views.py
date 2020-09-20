@@ -75,7 +75,7 @@ def github(request):
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
       
     
-
+    
 def home(request):
     return render(request, 'home.html')
 
