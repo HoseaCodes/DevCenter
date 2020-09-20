@@ -103,6 +103,10 @@ body {
     text-decoration: none;
     color: #CCCCCC;
     }
+
+.z-depth-5 {
+  flex-wrap: wrap-reverse;
+}
   
   footer {
     padding-top: 0;
