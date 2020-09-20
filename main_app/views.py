@@ -74,7 +74,8 @@ def github(request):
         print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
       
-    
+def twitter(request):
+    return render(request, 'core/twitter.html')
     
 def home(request):
     return render(request, 'home.html')

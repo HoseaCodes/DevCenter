@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twitter API</h2>
+<form action="/twitter" method="get">
+    {% csrf_token %}
+    <input type="text" name="twitter">
+    <button type="submit">search on Twitter</button>
+</form>
+<a href="{% url 'social:begin' 'twitter' %}">Sign in with Twitter</a>
+{% if twitter_result %}
+<ul>
+    <li><img src={{twitter_result.avatar_url}} alt="">
+    <li><strong>{{ twitter_result.name}}</strong>
+</ul>
+
+{% endif %}
+
+
+{% endblock %}
