@@ -13,15 +13,18 @@ from .models import Profile, Article, Photo
 from django.contrib.auth.models import User
 
 from django import forms
-
+from social_django.utils import load_strategy
 import uuid
 import boto3
-import requests
+import requests 
+import json
+from django.http import JsonResponse
 
 
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'teamadd'
+
 
 def add_photo(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
@@ -37,10 +40,11 @@ def add_photo(request, profile_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', profile_id=profile_id)
 
- 
+   
 def github(request):
     search_result = {}
     repolist = []
+    
     if 'username' in request.GET:
         username = request.GET['username']
         url = 'https://api.github.com/users/%s' % username 
@@ -54,9 +58,23 @@ def github(request):
         }
         response = requests.get(search_result['repos_url'])
         repolist = response.json()
-    # print(search_result)
+    elif 'name' in request.POST:
+        name = request.POST['name']
+        social = request.user.social_auth.values_list()
+        #print(social)
+        # print(((social[0])[4])['login'])
+        # print(((social[0])[4])['access_token'])
+        # url = 'https://api.github.com/user/repos'
+        # headers = {}
+        payload = { 'name': name }
+        # response = requests.post('https://api.github.com/user/repos', data=payload, headers=headers)
+        token = ((social[0])[4])['access_token']
+        github_user = ((social[0])[4])['login']
+        response= requests.post('https://api.github.com/' + 'user/repos', auth=(github_user, token), data=json.dumps(payload))
+        print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
-
+      
+    
 
 def home(request):
     return render(request, 'home.html')
