@@ -6,7 +6,6 @@
           <div class="card-body">
             <h2 class="card-title"><span>{{ article.name|default:"No Articles Yet"  }}</span></h2>
             <p class="card-text"><span>{{ article.content|default:"No Content"  }}</span></p>
-            <!-- <a href="#" class="btn btn-primary">Read More &rarr;</a> -->
           </div>
           <div class="card-footer text-muted">
             <span>{{ article.date|date:"D d M Y" }}</span>
@@ -14,17 +13,4 @@
             <a href="{% url 'articles_delete' article.id %}">Delete</a>
           </div>
         </div>
-
-<!-- <div>
-    <span>{{ article.name|default:"No Articles Yet"  }}</span>
-    <span>{{ article.date|date:"D d M Y" }}</span>
-    <span>{{ article.content|default:"No Content"  }}</span>
-    <span>Word Count: {{ article.content|wordcount }}</span>
-</div>
-
-<div>
-    <a href="{% url 'articles_update' article.id %}">Edit</a>
-    <a href="{% url 'articles_delete' article.id %}">Delete</a>
-</div> -->
-
 {% endblock %}
