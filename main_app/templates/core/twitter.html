@@ -4,17 +4,13 @@
 <h2>Twitter API</h2>
 <form action="/twitter" method="get">
     {% csrf_token %}
-    <input type="text" name="twitter">
-    <button type="submit">search on Twitter</button>
+    <input type="text" name="twitter_text">
+    <button type="submit">Post a Tweet</button>
 </form>
-<a href="{% url 'social:begin' 'twitter' %}">Sign in with Twitter</a>
-{% if twitter_result %}
-<ul>
-    <li><img src={{twitter_result.avatar_url}} alt="">
-    <li><strong>{{ twitter_result.name}}</strong>
-</ul>
+{% for tweet in public_tweets %}
 
-{% endif %}
+<h2>{{ tweet.text }}</h2>
+{% endfor %}
 
 
 {% endblock %}

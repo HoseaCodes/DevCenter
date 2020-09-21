@@ -20,6 +20,7 @@ import requests
 import json
 from django.http import JsonResponse
 
+import tweepy
 
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -40,6 +41,27 @@ def add_photo(request, profile_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', profile_id=profile_id)
 
+def twitter(request):
+    consumer_key = 'dVsH4M3DPLwqtvylzNCCxrZ4d'
+    consumer_secret = 'hprfHGgPuM8Oxx5VoMW0GHOZuyCWk4slKn6DTsboV58xfIUfXm'
+    access_token = '2319705902-NIvQW965NHgKBsJUIDZlKIRmg6WxZdrXOSvdCQD'
+    access_token_secret = 'VCNYaAyxFz2WDjXOLXlyg2pwsjIeeTi5r3zZ3Oty7QUQE'
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret, 'http://localhost:8000/')
+    auth.set_access_token(access_token, access_token_secret)
+    api = tweepy.API(auth)
+
+    twitter_text = {}
+
+    if 'twitter_text' in request.GET:
+        twitter_text = request.GET['twitter_text']
+        tweet = twitter_text
+        api.update_status(status=tweet)
+
+    public_tweets = api.home_timeline()
+    for tweet in public_tweets:
+        print(tweet.text)
+    return render(request, 'core/twitter.html', {"public_tweets": public_tweets})
    
 def github(request):
     search_result = {}
@@ -74,8 +96,7 @@ def github(request):
         print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
       
-def twitter(request):
-    return render(request, 'core/twitter.html')
+
     
 def home(request):
     return render(request, 'home.html')
