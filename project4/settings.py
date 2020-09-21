@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-from decouple import config
+from decouple import config, Csv
 from pathlib import Path
-
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -164,3 +164,6 @@ Settings for Production only -- un-comment before deploying
 
 import django_heroku
 django_heroku.settings(locals())
+
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
