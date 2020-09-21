@@ -7,7 +7,7 @@
     <div class="col s6">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">{{ user.first_name|upper }} {{ user.last_name|upper }}</span>
+                <span class="card-title">{{ profile.user.first_name|upper }} {{ profile.user.last_name|upper }}</span>
                 <p> Location: {{ profile.location }}</p>
                 <p> Bio: {{ profile.bio }}</p>
                 {% if profile.age > 0 %}
@@ -15,10 +15,6 @@
                 {% else %}
                 <p>Age: Baby</p>
                 {% endif %}
-            </div>
-            <div class="card-action">
-                <a href="{% url 'articles_update' article.id %}">Edit</a>
-                <a href="{% url 'articles_delete' article.id %}">Delete</a>
             </div>
         </div>
     </div>

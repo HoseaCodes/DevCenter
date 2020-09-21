@@ -38,6 +38,16 @@ body {
 .home-btn a{
   color: white;
 }
+
+.team-header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.team-title {
+  text-align: center;
+}
 .login-combo {
   display: flex;
   flex-direction: column;

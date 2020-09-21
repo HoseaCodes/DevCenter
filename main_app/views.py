@@ -220,7 +220,7 @@ def signup(request):
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
-    fields = ['bio', 'location', 'age']
+    fields = ['name','bio', 'location', 'age']
     def form_valid(self, form):
         form.instance.user = self.request.user  
         return super().form_valid(form)
