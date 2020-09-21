@@ -13,20 +13,21 @@
                 <div class="card-image">
                     <img src="../../static/css/logo.png" width='150' height="200" class="activator">
                     <!-- <span class="card-title"> {{ article.name }}</span> -->
-                    <a href="{% url 'articles_detail' article.id %}"
+                    <!-- <a href="{% url 'articles_detail' article.id %}"
                         class="btn-floating halfway-fab waves-effect waves-light teal"><i
-                            class="material-icons">✚</i></a>
+                            class="material-icons">✚</i></a> -->
+                            <a href="{% url 'articles_detail' article.id %}" class="btn-floating btn-primary btn-lg btn-block">Read More &rarr;</a>
                 </div>
                 <div class="card-panel hoverable teal darken-4">
                     <div class="card-content white-text">
                         <p>Date: {{ article.date }}</p>
-                        <p class="center-align truncate">{{ article.content }}</p>
+                        <p class="center-align">{{ article.content|truncatewords:7 }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- <div class="divider"></div> -->
+
 {% endfor %}
 {% endblock %}
