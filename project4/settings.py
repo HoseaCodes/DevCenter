@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u)v&yjfe$dnp2p5ti%7*_g5zp-$_ivix4%4+ty571h-xs%5#t+'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -150,9 +151,9 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_GITHUB_SCOPE = ['public_repo']
 SOCIAL_AUTH_GITHUB_AUTH_EXTRA_ARGUMENTS: {"access_type: offline"}
-SOCIAL_AUTH_GITHUB_KEY = '7ea23b3dc6867ae038b6'
-SOCIAL_AUTH_GITHUB_SECRET = 'b3c5f81eac8e62f228ce3f4739eedb10ab332641'
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET')
 SOCIAL_AUTH_LOGIN_FUNCTION = 'github.auth.login_user'
 SOCIAL_AUTH_LOGGEDIN_FUNCTION = 'github.auth.login_required'
-SOCIAL_AUTH_TWITTER_KEY = 'dVsH4M3DPLwqtvylzNCCxrZ4d'
-SOCIAL_AUTH_TWITTER_SECRET = 'hprfHGgPuM8Oxx5VoMW0GHOZuyCWk4slKn6DTsboV58xfIUfXm'
+SOCIAL_AUTH_TWITTER_KEY = config('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
