@@ -25,10 +25,7 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 from decouple import config
-import os
 
-# def some_function(request):
-#     my_key = os.environ['SECRET_KEY']
 
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
