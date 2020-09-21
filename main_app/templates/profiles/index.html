@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Profile List</h1>
+<h1>My Team</h1>
+<div class="card">
+  <div class="content">
+    <span class="card-title">{{ user.username}}</span>
+  </div>
+
+</div>
 
 {% for profile in profiles %}
 <div class="card">
   <a href="{% url 'detail' profile.user.id %}">
     <div class="card-content">
-      <span class="card-title">{{ profile.user.first_name }} {{ profile.user.first_name }}</span>
+      <span class="card-title">{{ profile.user.first_name }} {{ profile.user.last_name }}</span>
       <p>Email: {{ profile.user.email }}</p>
       <p>Location: {{ profile.location }}</p>
       <p>Bio: {{ profile.bio }}</p>

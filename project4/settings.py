@@ -137,8 +137,8 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/profiles/'
 LOGOUT_REDIRECT_URL = '/'
 
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+# LOGIN_URL = 'login'
+# LOGOUT_URL = 'logout'
 
 
 AUTHENTICATION_BACKENDS = (

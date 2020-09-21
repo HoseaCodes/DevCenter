@@ -58,7 +58,7 @@ body {
   .nav {
     background-color: #004d40 ;
     /* background-color: rgb(37, 95, 99); */
-    justify-content: space-around;
+    justify-content: space-evenly;
     text-align: center;
   }
 

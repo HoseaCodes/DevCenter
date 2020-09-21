@@ -7,10 +7,23 @@
     <input type="text" name="twitter_text">
     <button type="submit">Post a Tweet</button>
 </form>
+<h2>public_tweets</h2>
 {% for tweet in public_tweets %}
-
 <h2>{{ tweet.text }}</h2>
 {% endfor %}
+
+<h2>Streaming</h2>
+<form action="/twitter" method="get">
+    {% csrf_token %}
+    <input type="text" name="stream_text">
+    <button type="submit">See a Stream</button>
+</form>
+<img src="{{ data.user.profile_image_url }}" alt="{{ data.user.name }}">
+<h2>{{ data.user.name }}</h2>
+<h2>{{ data.user.screen_name }}</h2>
+<h2>{{ data.user.description }}</h2>
+<h2>{{ data.text }}</h2>
+<h2>{{ data.source }}</h2>
 
 
 {% endblock %}

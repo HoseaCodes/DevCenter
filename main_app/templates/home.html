@@ -1,31 +1,45 @@
-{% extends 'base.html' %}
-{% block content %}
+{% load static %}
+{% static "../static/css/logo.png" as myphoto %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/blog-home.css" rel="stylesheet">
+    <title>Team ADD</title>
+</head>
 
-<a class="navbar-brand" href="{% url 'home' %}"> <img src="{{ myphoto }}" alt="logo" width="100px" height="100px">
-    &nbsp;&nbsp;</a>
-<div class="home">
-    <h1> Welcome to DevCenter</h1>
-    <hr />
-    {% if user.is_authenticated %}
-    <h2>
-        Hello, {{ user.username }}
-    </h2>
-    <p>You are now logged in to your account.</p>
-    <button class="btn home-btn"><a href="{% url 'logout' %}">Logout</a></button>
-    {% else %}
-    <p>Lets log in and get started!</p>
+<body>
+    <a class="navbar-brand" href="{% url 'home' %}"> <img src="{{ myphoto }}" alt="logo" width="100px" height="100px">
+        &nbsp;&nbsp;</a>
+    <div class="home">
+        <h1> Welcome to DevCenter</h1>
+        <hr />
+        {% if user.is_authenticated %}
+        <h2>
+            Hello, {{ user.username }}
+        </h2>
+        <p>You are now logged in to your account.</p>
+        <button class="btn home-btn"><a href="{% url 'logout' %}">Logout</a></button>
+        {% else %}
+        <p>Lets log in and get started!</p>
 
-    <button class="btn home-btn"><a href="{% url 'login' %}">Login</a></button>
-    <div class="basic">
+        <button class="btn home-btn"><a href="{% url 'login' %}">Login</a></button>
+        <div class="basic">
+        </div>
+        <br>
+        <p>No account, no problem.</p>
+        <button class="btn home-btn"><a href="{% url 'signup' %}">Sign Up</a></button>
+        {% endif %}
+
     </div>
-    <br>
-    <p>No account, no problem.</p>
-    <button class="btn home-btn"><a href="{% url 'signup' %}">Sign Up</a></button>
-    {% endif %}
+</body>
 
-</div>
-
-
-
-{% endblock %}
+</html>

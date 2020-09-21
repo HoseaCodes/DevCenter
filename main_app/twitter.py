@@ -7,33 +7,79 @@
 
 
 import tweepy
+from tweepy import API
+from tweepy import Cursor
+from tweepy.streaming import StreamListener
+from tweepy import OAuthHandler
+from tweepy import Stream
 
-# Create variables for each key, secret, token
 consumer_key = 'dVsH4M3DPLwqtvylzNCCxrZ4d'
 consumer_secret = 'hprfHGgPuM8Oxx5VoMW0GHOZuyCWk4slKn6DTsboV58xfIUfXm'
 access_token = '2319705902-NIvQW965NHgKBsJUIDZlKIRmg6WxZdrXOSvdCQD'
 access_token_secret = 'VCNYaAyxFz2WDjXOLXlyg2pwsjIeeTi5r3zZ3Oty7QUQE'
 
-# Set up OAuth and integrate with API
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret, 'http://localhost:8000/')
-try:
-    redirect_url = auth.get_authorization_url()
-except tweepy.TweepError:
-    print('Error! Failed to get request token.')
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
+class TwitterAuthenicator():
+    def authenticate_twitter_app(self):
+        auth = OAuthHandler(TWITTER_API_KEY, TWITTER_SECRET__KEY)
+        auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
+        return auth
 
-# Write a tweet to push to our Twitter account
-twitter_text = {}
-if 'twitter_text' in request.GET:
-    twitter_text = request.GET['twitter_text']
-    tweet = twitter_text
-    api.update_status(status=tweet)
+class TwitterStreamer():
+    def __int__(self):
+        self.twitter_authenicator = TwitterAuthenticator()
 
-public_tweets = api.home_timeline()
-for tweet in public_tweets:
-    print(tweet.text)
-return render(request, 'core/twitter.html')
+    def stream_tweets(self, fetched_tweets_filename, hash_tag_list):
+        listner = TwitterListener(fetched_tweets_filename)
+        auth = self.twitter_authenicator.authenticate_twitter_app()
+        stream = Stream(auth, listner)
+        stream.filter(track=hash_tag_list)
+
+
+class TwitterListener(StreamListener):
+    def __int__(se1f, fetched_tweets_filename):
+        self.fetched_tweets_filename = fetched_tweets_filename
+
+    def on_data(self, data):
+        try:
+            print(data)
+            with open(self.fetched_tweets_filename, 'a') as tf:
+                tf.write(data)
+            return True
+        except BaseException as e:
+            print('Error on_data:' % str(e))
+        return True 
+    def on_error(self, status):
+        print(status)
+
+if __name__ == "__main__":
+    hash_tag_list = ['SERI 629, junior software engineer, software engineer intern, coding interview ']
+    fetched_tweets_filename = 'tweets.json'
+
+    twitter_streamer = TwitterStreamer()
+    twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
+
+# # Create variables for each key, secret, token
+# consumer_key = 'dVsH4M3DPLwqtvylzNCCxrZ4d'
+# consumer_secret = 'hprfHGgPuM8Oxx5VoMW0GHOZuyCWk4slKn6DTsboV58xfIUfXm'
+# access_token = '2319705902-NIvQW965NHgKBsJUIDZlKIRmg6WxZdrXOSvdCQD'
+# access_token_secret = 'VCNYaAyxFz2WDjXOLXlyg2pwsjIeeTi5r3zZ3Oty7QUQE'
+
+# # Set up OAuth and integrate with API
+# auth = tweepy.OAuthHandler(consumer_key, consumer_secret, 'http://localhost:8000/')
+# auth.set_access_token(access_token, access_token_secret)
+# api = tweepy.API(auth)
+
+# # Write a tweet to push to our Twitter account
+# twitter_text = {}
+# if 'twitter_text' in request.GET:
+#     twitter_text = request.GET['twitter_text']
+#     tweet = twitter_text
+#     api.update_status(status=tweet)
+
+# public_tweets = api.home_timeline()
+# for tweet in public_tweets:
+#     print(tweet.text)
+# return render(request, 'core/twitter.html')
 
 # TWITTER_API_KEY = "dVsH4M3DPLwqtvylzNCCxrZ4d"
 # TWITTER_SECRET__KEY = "hprfHGgPuM8Oxx5VoMW0GHOZuyCWk4slKn6DTsboV58xfIUfXm"
