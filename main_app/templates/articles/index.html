@@ -2,21 +2,13 @@
 {% block content %}
 {% for article in articles %}
 <div class="row">
-    <!-- <div class="collection">
-        <a href="{% url 'articles_detail' article.id %}" class="collection-item"><span class="new badge">New
-                Post</span>{{ article.name }}</a>
-    </div> -->
     <div class="col s6">
         <div class="col s3">
             <h2 class="header">{{ article.name|title }}</h2>
             <div class="card z-depth-5">
                 <div class="card-image">
                     <img src="../../static/css/logo.png" width='150' height="200" class="activator">
-                    <!-- <span class="card-title"> {{ article.name }}</span> -->
-                    <!-- <a href="{% url 'articles_detail' article.id %}"
-                        class="btn-floating halfway-fab waves-effect waves-light teal"><i
-                            class="material-icons">✚</i></a> -->
-                            <a href="{% url 'articles_detail' article.id %}" class="btn-floating btn-primary btn-lg btn-block">Read More &rarr;</a>
+                    <a href="{% url 'articles_detail' article.id %}" class="btn-floating btn-primary btn-lg btn-block">Read More &rarr;</a>
                 </div>
                 <div class="card-panel hoverable teal darken-4">
                     <div class="card-content white-text">
