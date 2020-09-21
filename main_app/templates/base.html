@@ -1,5 +1,5 @@
 {% load static %}
-{% static "../static/css/logo.png" as myphoto %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@
     <div class="arangement">
         {% if user.is_authenticated %}
         <ul class="nav flex-column">
-            <li><a class="navbar-brand" href="{% url 'home' %}"> <img src="{{ myphoto }}" alt="logo" width="100px"
+            <li><a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'css/logo.png' %}" alt="logo" width="100px"
                         height="100px"> &nbsp;&nbsp;</a></li>
             <hr class="base-line">
             <li class="base-header"><a class="base-a" href="{% url 'index' %}">My Team</a></li>
