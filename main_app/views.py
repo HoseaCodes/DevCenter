@@ -24,6 +24,7 @@ import tweepy
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
+from decouple import config
 
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -45,10 +46,10 @@ def add_photo(request, profile_id):
     return redirect('detail', profile_id=profile_id)
 
 def twitter(request):
-    consumer_key = 'dVsH4M3DPLwqtvylzNCCxrZ4d'
-    consumer_secret = 'hprfHGgPuM8Oxx5VoMW0GHOZuyCWk4slKn6DTsboV58xfIUfXm'
-    access_token = '2319705902-NIvQW965NHgKBsJUIDZlKIRmg6WxZdrXOSvdCQD'
-    access_token_secret = 'VCNYaAyxFz2WDjXOLXlyg2pwsjIeeTi5r3zZ3Oty7QUQE'
+    consumer_key = config('CONSUMER_KEY')
+    consumer_secret = config('CONSUMER_SECRET')
+    access_token = config('ACCESS_TOKEN')
+    access_token_secret = config('ACCESS_TOKEN_SECRET')
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret, 'http://localhost:8000/')
     auth.set_access_token(access_token, access_token_secret)
@@ -188,18 +189,12 @@ def github(request):
         response= requests.post('https://api.github.com/' + 'user/repos', auth=(github_user, token), data=json.dumps(payload))
         print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
-      
-
-    
+        
 def home(request):
     return render(request, 'home.html')
 
-def about(request):
-    return render(request, 'about.html')
-
 @login_required
 def profiles_index(request):
-    # profiles = Profile.objects.all()
     profiles = Profile.objects.filter(user=request.user)
     return render(request, 'profiles/index.html', {'profiles': profiles})
 
@@ -226,8 +221,6 @@ def signup(request):
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     fields = ['bio', 'location', 'age']
-    # model = User
-    # fields = [user.first_name, user.last_name, user.email]
     def form_valid(self, form):
         form.instance.user = self.request.user  
         return super().form_valid(form)
