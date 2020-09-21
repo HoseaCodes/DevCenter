@@ -1,5 +1,5 @@
 {% load static %}
-{% static "../static/css/logo.png" as myphoto %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@
 </head>
 
 <body class="home-body">
-    <a class="navbar-brand home-logo" href="{% url 'home' %}"> <img src="{{ myphoto }}" alt="logo" width="100px"
+    <a class="navbar-brand home-logo" href="{% url 'home' %}"> <img src="{% static 'css/logo.png' %}" alt="logo" width="100px"
             height="100px">
         &nbsp;&nbsp;</a>
     <div class="home">
