@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -157,3 +157,10 @@ SOCIAL_AUTH_LOGIN_FUNCTION = 'github.auth.login_user'
 SOCIAL_AUTH_LOGGEDIN_FUNCTION = 'github.auth.login_required'
 SOCIAL_AUTH_TWITTER_KEY = config('SOCIAL_AUTH_TWITTER_KEY')
 SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
+
+"""
+Settings for Production only -- un-comment before deploying
+"""
+
+import django_heroku
+django_heroku.settings(locals())
