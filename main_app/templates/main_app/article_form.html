@@ -2,18 +2,19 @@
 {% block content %}
 
 {% if object  %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+<h1 class='form-title'>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
-<h1>Add Article</h1>
+<h1 class='form-title'>Add Article</h1>
 {% endif %}
-
-<form action="" method="post">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input class="btn" type="submit" value="Submit">
-</form>
+<div class="card">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input class="btn blue" type="submit" value="Submit">
+    </form>
+</div>
 <script>
     var dateEl = document.getElementById('id_date');
     M.Datepicker.init(dateEl, {

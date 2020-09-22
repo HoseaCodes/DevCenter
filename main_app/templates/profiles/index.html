@@ -5,44 +5,36 @@
 <div class="team-header">
   <h1 class="team-title">My Team</h1>
   <button class="btn blue">
-    <a class="base-a" href="{% url 'profiles_create' %}">Add Member</a>
+    <a style='color:white;' class="base-a" href="{% url 'profiles_create' %}">Add Member</a>
   </button>
 </div>
 
-<div class="card">
+<div class="card profile-index" style="background-color: transparent; border-color: white;">
   <div class="content">
-    <span class="card-title"> Team Name: {{ user.username}}</span>
+    <span class="card-title" style="color: white;"> Team Name: {{ user.username}}</span>
   </div>
 
 </div>
 
 {% for profile in profiles %}
-<!-- <div class="card">
-  <a href="{% url 'detail' profile.user.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ profile.name}}</span>
-      <p>Email: {{ profile.user.email }}</p>
-      <p>Location: {{ profile.location }}</p>
-      <p>Bio: {{ profile.bio }}</p>
-      {% if profile.age > 0 %}
-      <p>Age: {{ profile.age }}</p>
-      {% else %}
-      <p>Age: baby</p>
-      {% endif %}
-    </div>
-  </a>
-</div> -->
-
 <ul class="collection">
+<<<<<<< HEAD
   <a href="{% url 'detail' profile.id %}">
     <li class="collection-item avatar">
       <img src="{% static 'css/logo.png' %}" alt="" class="circle" />
       <span class='title'>{{profile.name}}</span>
       <p><br>
+=======
+  <a href=" {% url 'detail' profile.id %}">
+    <li class="collection-item avatar" style="background-color: transparent;">
+      <img src=" {% static 'css/logo.png' %}" alt="" class="circle" />
+      <span class='title' style="color: white;">{{profile.name}}</span>
+      <p style="color: white;"><br>
+>>>>>>> 6a0a2668dd3012c46b1468f13369734acc637591
         {{profile.bio}}<br>
         {{profile.location}}
       </p>
-      <a href=" #!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <a href=" #!" class="secondary-content">⭐️</a>
     </li>
   </a>
 </ul>
