@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from decouple import config, Csv
 from pathlib import Path
 import os
-# import environ
-# environ.Env()
-# environ.Env.read_env()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +26,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
@@ -165,41 +163,41 @@ SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
 Settings for Production only -- un-comment before deploying
 """
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'formatters': {
-#         'verbose': {
-#             'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-#                        'pathname=%(pathname)s lineno=%(lineno)s ' +
-#                        'funcname=%(funcName)s %(message)s'),
-#             'datefmt': '%Y-%m-%d %H:%M:%S'
-#         },
-#         'simple': {
-#             'format': '%(levelname)s %(message)s'
-#         }
-#     },
-#     'handlers': {
-#         'null': {
-#             'level': 'DEBUG',
-#             'class': 'logging.NullHandler',
-#         },
-#         'console': {
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#             'formatter': 'verbose'
-#         }
-#     },
-#     'loggers': {
-#         'testlogger': {
-#             'handlers': ['console'],
-#             'level': 'INFO',
-#         }
-#     }
-# }
-# DEBUG_PROPAGATE_EXCEPTIONS = True
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+                       'pathname=%(pathname)s lineno=%(lineno)s ' +
+                       'funcname=%(funcName)s %(message)s'),
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        }
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'testlogger': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        }
+    }
+}
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
