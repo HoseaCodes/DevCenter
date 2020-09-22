@@ -6,7 +6,7 @@
 <div class="card mb-4">
   <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
   <div class="card-body">
-    <h2 class="card-title"><span>{{ article.name|default:"No Articles Yet"  }}</span></h2>
+    <h2 class="card-title"><span>{{ article.name|truncatewords:3}}</span></h2>
     <p class="card-text"><span>{{ article.content|default:"No Content"  }}</span></p>
   </div>
   <div class="card-footer text-muted">
