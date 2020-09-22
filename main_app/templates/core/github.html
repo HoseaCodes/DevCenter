@@ -1,38 +1,61 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>GitHub API</h2>
-  <form action="/github" method="get">
-    {% csrf_token %}
-    <input type="text" name="username">
-    <button type="submit">search on github</button>
-  </form>
-  <a href="{% url 'social:begin' 'github' %}">Sign in with Github</a>
-  {% if search_result %}
-    {% if search_result.success %}
-      <ul>
-        <li><img src={{search_result.avatar_url}} alt="">
-        <li><strong>{{ search_result.name|default_if_none:search_result.login }}</strong>
-        <li><strong>{{ search_result.public_repos }}</strong> public repositories.</li>
-        <li><strong>Location: {{ search_result.location}}</strong></li>
-        <li><strong>Blog: {{ search_result.blog}}</strong></li>
-        <li><strong>Bio: {{ search_result.bio}}</strong></li>
-      </ul>
-      <ul>
-      {% for repo in repolist %}
-        <li ><a href={{repo.html_url}}>{{repo.name}}</a></li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p><em>{{ search_result.message }}</em></p>
-    {% endif %}
-    <p>Rate limit: {{ search_result.rate.remaining }}/{{ search_result.rate.limit }}</p>
-  {% endif %}
+<div class="github-signin">
 
-  <form action="/github/" method="POST">
-    {% csrf_token %}
-    <label >Repo name:</label><br>
-    <input type="text" name="name"><br>
-    <button type="submit">Create Repo</button>
-  </form> 
+  <h2> Please Click Link Below To Get Started</h2>
+  <p>▽ ▽ ▽</p>
+  <button class="btn blue">
+    <a href="{% url 'social:begin' 'github' %}" style="color: white;">Sign in with Github</a>
+  </button>
+</div>
+
+
+<form action="/github/" method="POST">
+  {% csrf_token %}
+  <input type="text" name="name"><br>
+  <button class="btn blue" style="color: white;" type="submit">Create Repository</button>
+</form>
+
+<form action="/github" method="get">
+  {% csrf_token %}
+  <input type="text" name="username">
+  <button class="btn blue" style="color: white;" type="submit">Search Profile</button>
+</form>
+{% if search_result %}
+{% if search_result.success %}
+<div class="card mb-4">
+  <div>
+    <img class="card-img-top" src="{{search_result.avatar_url}}" alt="Card image cap" width="200px" height="600px">
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">{{ search_result.name|default_if_none:search_result.login }}</h2>
+    <p class="card-text">
+      <br>
+      {{ search_result.public_repos }} public repositories.
+      <br>
+      Location: {{ search_result.location}}
+      <br>
+      Blog: {{ search_result.blog}}
+      <br>
+      Bio: {{ search_result.bio}}
+    </p>
+  </div>
+</div>
+<ul class="collection with-header">
+  <li class="collection-header">
+    <h3>Repository List</h3>
+  </li>
+  {% for repo in repolist %}
+  <li class="collection-item"><a href={{repo.html_url}} style='color: black;'>{{repo.name}}</a></li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<p><em>{{ search_result.message }}</em></p>
+{% endif %}
+
+<p style="color: white;">Rate limit: {{ search_result.rate.remaining }}/{{ search_result.rate.limit }}</p>
+{% endif %}
+
 {% endblock %}
