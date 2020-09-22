@@ -22,7 +22,7 @@
   <a href=" {% url 'detail' profile.id %}">
     <li class="collection-item avatar" style="background-color: transparent;">
       {% for photo in profile.photo_set.all %}
-      <img src="{{photo.url}}" alt="" class="circle" />
+      <img src="{% static 'css/logo.png' %}" alt="" class="circle" />
       {% endfor %}
       <span class='title' style="color: white;">{{profile.name}}</span>
       <p style="color: white;"><br>
