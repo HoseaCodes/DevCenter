@@ -24,7 +24,7 @@
       {% for photo in profile.photo_set.all %}
       <img src="{{ photo.url }}" alt="" class="circle" />
       {% endfor %}
-      <span class='title' style="color: white;">{{profile.name}}</span>
+     
       <p style="color: white;"><br>
         {{profile.bio}}<br>
         {{profile.location}}
