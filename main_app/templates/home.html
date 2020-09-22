@@ -11,14 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-<<<<<<< HEAD
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/blog-home.css" rel="stylesheet">
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-=======
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
->>>>>>> e115da1cdc817820a102c5ae029a09b738c0b82c
     <title>Team ADD</title>
 </head>
 
@@ -27,32 +20,6 @@
         <a class="navbar-brand home-logo" href="{% url 'index' %}"> <img src="{% static 'css/logo.png' %}" alt="logo"
             width="100px" height="100px">
             &nbsp;&nbsp;</a>
-<<<<<<< HEAD
-        </div>
-        <div class="home">
-            <h1 class="home-title"> Welcome to DevCenter</h1>
-            <hr />
-            {% if user.is_authenticated %}
-            <h2>
-                Hello, {{ user.username }}
-            </h2>
-            <h2>You are now logged in to your account.</h2>
-            <button class="btn home-btn blue"><a href="{% url 'logout' %}">Logout</a></button>
-            {% else %}
-            <h2>Lets log in and get started!</h2>
-            
-            <button class="btn home-btn blue"><a href="{% url 'login' %}">Login</a></button>
-            <div class="basic">
-            </div>
-            <br>
-            <h2>No account, no problem.</h2>
-            <button class="btn home-btn blue"><a href="{% url 'signup' %}">Sign Up</a></button>
-            {% endif %}
-            
-        </div>
-    </body>
-    </html>
-=======
     </div>
     <div class="home">
         <h1 class="home-title"> Welcome to DevCenter</h1>
@@ -78,4 +45,3 @@
 </body>
 
 </html>
->>>>>>> e115da1cdc817820a102c5ae029a09b738c0b82c
