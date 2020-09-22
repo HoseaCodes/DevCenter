@@ -7,7 +7,7 @@
     <div class="col s6">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">{{ profile.user.first_name|upper }} {{ profile.user.last_name|upper }}</span>
+                <span class="card-title">{{ profile.name|upper }}</span>
                 <p> Location: {{ profile.location }}</p>
                 <p> Bio: {{ profile.bio }}</p>
                 {% if profile.age > 0 %}
@@ -15,11 +15,14 @@
                 {% else %}
                 <p>Age: Baby</p>
                 {% endif %}
+                <br>
+                <h5><a href="{% url 'profiles_update' profile.id %}" style="color: orange;">Edit</a></h5>
+                <h5><a href="{% url 'profiles_delete' profile.id %}" style="color: orange;">Delete</a></h5>
             </div>
         </div>
     </div>
     {% for photo in profile.photo_set.all %}
-    <img class="responsive-img card-panel" src="{% static 'css/logo.png' %}">
+    <img class="responsive-img card-panel" src="{{ photo.url }}">
     {% empty %}
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endfor %}
@@ -27,7 +30,7 @@
         {% csrf_token %}
         <input type="file" name="photo-file">
         <br><br>
-        <input type="submit" class="btn blue" value="Upload Photo">
+        <input type="submit" class="btn blue" style="color: white;" value="Upload Photo">
     </form>
 </div>
 
