@@ -212,6 +212,7 @@ def home(request):
 
 @login_required
 def profiles_index(request):
+    print(request)
     profiles = Profile.objects.filter(user=request.user)
     return render(request, 'profiles/index.html', {'profiles': profiles})
 
