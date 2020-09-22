@@ -7,15 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/blog-home.css" rel="stylesheet">
     <title>Team ADD</title>
 </head>
 
@@ -24,9 +20,6 @@
         <a class="navbar-brand home-logo" href="{% url 'index' %}"> <img src="{% static 'css/logo.png' %}" alt="logo"
                 width="100px" height="100px">
             &nbsp;&nbsp;</a>
-        <!-- <a class="navbar-brand home-logo" href="{% url 'index' %}"> <img src="{% static 'css/people.png' %}" alt="logo"
-                width="60px" height="60px">
-            &nbsp;&nbsp;</a> -->
     </div>
     <div class="home">
         <h1 class="home-title"> Welcome to DevCenter</h1>
@@ -47,9 +40,8 @@
         <h2>No account, no problem.</h2>
         <button class="btn home-btn blue"><a href="{% url 'signup' %}">Sign Up</a></button>
         {% endif %}
-       
+
     </div>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 
 </html>

@@ -244,7 +244,7 @@ class ProfileCreate(LoginRequiredMixin, CreateView):
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
-    fields = ['bio', 'location', 'age']   
+    fields = ['name', 'bio', 'location', 'age']   
    
 
 class ProfileDelete(LoginRequiredMixin, DeleteView):
