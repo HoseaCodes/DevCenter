@@ -175,20 +175,20 @@ def github(request):
         }
         response = requests.get(search_result['repos_url'])
         repolist = response.json()
-    elif 'name' in request.POST:
-        name = request.POST['name']
-        social = request.user.social_auth.values_list()
-        #print(social)
-        # print(((social[0])[4])['login'])
-        # print(((social[0])[4])['access_token'])
-        # url = 'https://api.github.com/user/repos'
-        # headers = {}
-        payload = { 'name': name }
-        # response = requests.post('https://api.github.com/user/repos', data=payload, headers=headers)
-        token = ((social[0])[4])['access_token']
-        github_user = ((social[0])[4])['login']
-        response= requests.post('https://api.github.com/' + 'user/repos', auth=(github_user, token), data=json.dumps(payload))
-        print(response)
+    # elif 'name' in request.POST:
+    #     name = request.POST['name']
+    #     social = request.user.social_auth.values_list()
+    #     #print(social)
+    #     # print(((social[0])[4])['login'])
+    #     # print(((social[0])[4])['access_token'])
+    #     # url = 'https://api.github.com/user/repos'
+    #     # headers = {}
+    #     payload = { 'name': name }
+    #     # response = requests.post('https://api.github.com/user/repos', data=payload, headers=headers)
+    #     token = ((social[0])[4])['access_token']
+    #     github_user = ((social[0])[4])['login']
+    #     response= requests.post('https://api.github.com/' + 'user/repos', auth=(github_user, token), data=json.dumps(payload))
+    #     print(response)
     return render(request, 'core/github.html', {'search_result': search_result, 'repolist': repolist})
         
 def home(request):
