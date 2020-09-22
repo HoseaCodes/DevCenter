@@ -46,6 +46,22 @@ def add_photo(request, profile_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', profile_id=profile_id)
 
+# def article_add_photo(request, article_id):
+#     photo_file = request.FILES.get('photo-file', None)
+#     if photo_file:
+#         s3 = boto3.client('s3')
+#         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+#         try:
+#             s3.upload_fileobj(photo_file, BUCKET, key)
+#             url = f"{S3_BASE_URL}{BUCKET}/{key}"
+#             photo = Photo(url=url, article_id=article_id)
+#             photo.save()
+#         except:
+#             print('An error occurred uploading file to S3')
+#     return redirect('articles_detail', article_id=article_id)
+
+
+
 def twitter(request):
     consumer_key = config('CONSUMER_KEY')
     consumer_secret = config('CONSUMER_SECRET')
