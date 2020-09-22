@@ -18,19 +18,11 @@
 
 {% for profile in profiles %}
 <ul class="collection">
-<<<<<<< HEAD
-  <a href="{% url 'detail' profile.id %}">
-    <li class="collection-item avatar">
-      <img src="{% static 'css/logo.png' %}" alt="" class="circle" />
-      <span class='title'>{{profile.name}}</span>
-      <p><br>
-=======
   <a href=" {% url 'detail' profile.id %}">
     <li class="collection-item avatar" style="background-color: transparent;">
       <img src=" {% static 'css/logo.png' %}" alt="" class="circle" />
       <span class='title' style="color: white;">{{profile.name}}</span>
       <p style="color: white;"><br>
->>>>>>> 6a0a2668dd3012c46b1468f13369734acc637591
         {{profile.bio}}<br>
         {{profile.location}}
       </p>
