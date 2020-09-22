@@ -165,8 +165,8 @@ SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
 Settings for Production only -- un-comment before deploying
 """
 
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
 
 LOGGING = {
     'version': 1,

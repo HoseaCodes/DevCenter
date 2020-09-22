@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% static "../static/css/logo.png" as myphoto %}
 {% block content %}
 
 <div class="team-header">
@@ -37,7 +36,7 @@
 <ul class="collection">
   <a href="{% url 'detail' profile.id %}">
     <li class="collection-item avatar">
-      <img src="{{ myphoto }}" alt="" class="circle" />
+      <img src="{% static 'css/logo.png' %}" alt="" class="circle" />
       <span class='title'>{{profile.name}}</span>
       <p><br>
         {{profile.bio}}<br>
