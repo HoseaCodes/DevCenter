@@ -10,7 +10,10 @@
             <h2 class="header" style="color: white; text-align: center;">{{ article.name|title }}</h2>
             <div class="card z-depth-5">
                 <div class="card-image">
-                    <img src="{% static 'css/logo.png' %}" width='150' height="500" class="activator">
+                    {% for photo in article.photo_set.all %}
+                    <img src="{{photo.url}}" width='150' height="500" class="activator">
+                    {% endfor %}
+
                     <a href="{% url 'articles_detail' article.id %}"
                         class="btn-floating btn-primary btn-lg btn-block">Read
                         More &rarr;</a>

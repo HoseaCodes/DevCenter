@@ -11,7 +11,8 @@
 
 <div class="card profile-index" style="background-color: transparent; border-color: white;">
   <div class="content">
-    <span class="card-title" style="color: white;"> Team Name: {{ user.username}}</span>
+    <span class="card-title" style="color: white; text-transform: uppercase; text-align: center;"> Team Name:
+      {{ user.username}}</span>
   </div>
 
 </div>
@@ -20,7 +21,9 @@
 <ul class="collection">
   <a href=" {% url 'detail' profile.id %}">
     <li class="collection-item avatar" style="background-color: transparent;">
-      <img src=" {% static 'css/logo.png' %}" alt="" class="circle" />
+      {% for photo in profile.photo_set.all %}
+      <img src="{{photo.url}}" alt="" class="circle" />
+      {% endfor %}
       <span class='title' style="color: white;">{{profile.name}}</span>
       <p style="color: white;"><br>
         {{profile.bio}}<br>

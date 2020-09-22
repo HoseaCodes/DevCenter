@@ -1,29 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Twitter API</h2>
+<h2 style="color: white; text-align: center;">Twitter API</h2>
 <form action="/twitter" method="get">
     {% csrf_token %}
     <input type="text" name="twitter_text">
-    <button type="submit">Post a Tweet</button>
+    <button class="btn blue" style="color: white;" type="submit">Post a Tweet</button>
 </form>
+
+
 <h2>public_tweets</h2>
 {% for tweet in public_tweets %}
-<h2>{{ tweet.text }}</h2>
+<meta name=”twitter:card” content='summary_large_image' />
+<meta name=”twitter:site” content='{{ data.user.screen_name }}' />
+<meta name=”twitter:title” content=”Your Title” />
+<meta name=”twitter:description” content='{{ tweet.text }}' />
+<meta name=”twitter:image” content=”https://where-your-image-is-hosted/name.jpg” />
+
+<div class="card">
+    <div class="card-content">
+        <img src="{{ data.user.profile_image_url }}" alt="{{ data.user.name }}">
+        <h4><a href="{{tweet.user.url}} ">{{tweet.user.screen_name}} </a></h4>
+        <p><a href="{{ tweet.source }}">{{ tweet.source }}</a></p>
+        <p>{{ tweet.text }}</p>
+        <p><a href="{{tweet.urls.url}} "></a> Link</p>
+    </div>
+</div>
+
 {% endfor %}
 
+<meta name="twitter:card" content="summary_large_image"><!-- required -->
+<meta name="twitter:card" content="summary_large_image"><!-- required -->
+<meta name="twitter:site" content="@DominiqueRHosea"><!-- required -->
+<meta name="twitter:creator" content="@author_twitter_handle"><!-- optional -->
+<meta name="twitter:title" content="Post title"><!-- required -->
+<meta name="twitter:description" content="Post description ..."><!-- optional -->
+<meta name="twitter:image" content="large-image.jpg"><!-- optional -->
+<meta name="twitter:image:alt" content="Image text description"><!-- optional -->
+
+<!-- 
 <h2>Streaming</h2>
 <form action="/twitter" method="get">
     {% csrf_token %}
     <input type="text" name="stream_text">
     <button type="submit">See a Stream</button>
-</form>
-<img src="{{ data.user.profile_image_url }}" alt="{{ data.user.name }}">
-<h2>{{ data.user.name }}</h2>
-<h2>{{ data.user.screen_name }}</h2>
-<h2>{{ data.user.description }}</h2>
-<h2>{{ data.text }}</h2>
-<h2>{{ data.source }}</h2>
+</form> -->
 
 
 {% endblock %}
