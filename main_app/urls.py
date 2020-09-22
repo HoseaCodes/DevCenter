@@ -14,6 +14,7 @@ urlpatterns = [
     path('articles/create', views.ArticleCreate.as_view(), name='articles_create'),
     path('articles/<int:pk>/update/', views.ArticleUpdate.as_view(), name='articles_update'),
     path('articles/<int:pk>/delete/', views.ArticleDelete.as_view(), name='articles_delete'),
+    # path('articles/<int:article_id>/article_add_photo/', views.article_add_photo, name='article_add_photo'),
     path('github/', views.github, name='github'),
     path('twitter/', views.twitter, name='twitter'),
     path('accounts/signup/', views.signup, name='signup'),
