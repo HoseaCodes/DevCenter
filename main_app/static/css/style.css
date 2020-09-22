@@ -2,6 +2,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; 
+  background-image: url("https://i.imgur.com/ZVpay2g.jpg");
+  background-color: black;
+  background-size: cover;
 }
 .home {
   background: rgb(32,106,93);
@@ -23,22 +26,29 @@ body {
   justify-content: center;
   align-items: center;
 }
+.home-icons {
+  display: flex;
+  align-self: unset
+}
 .home-logo {
   display: flex;
-  align-self: flex-start;
-  margin-left: 120px;
+  align-self: center;
 }
 .home-btn {
   width: 8rem;
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: black;
+}
+.home-title {
+  font-size: 4rem;
 }
 .home-btn a{
   color: white;
 }
-
+.form-title {
+  color: white;
+} 
 .team-header {
   display: flex;
   flex-direction: column;
@@ -47,6 +57,36 @@ body {
 
 .team-title {
   text-align: center;
+  color: white;
+}
+.collection-items, .collection{
+  background-color: transparent;
+  color: black;
+}
+.collection-items a{
+  color: black;
+}
+
+.profile-index {
+  background-color: transparent;
+
+}
+
+.article-index {
+  display: flex;
+}
+
+.collection a {
+  color: white;
+}
+
+.github-signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 7rem;
 }
 .login-combo {
   display: flex;
@@ -56,10 +96,12 @@ body {
 .login-h1 {
   display: flex;
   align-self: center;
+  color: white;
 }
 
 .signup-h1 {
   text-align: center;
+  color: white;
 }
 
 

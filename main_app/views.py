@@ -238,7 +238,9 @@ class ProfileDelete(LoginRequiredMixin, DeleteView):
 @login_required   
 def articles_index(request):
     articles = Article.objects.all()
-    return render(request, 'articles/index.html', { 'articles': articles })
+    return render(request, 'articles/index.html', { 
+        'articles': articles,
+         })
 
 @login_required
 def articles_detail(request, article_id):

@@ -3,18 +3,19 @@
 {% block content %}
 
 {% if object %}
-<h1>Edit<span class="teal-text">{{object.name}}</span></h1>
+<h1 class='form-title'>Edit<span class="teal-text">{{object.name}}</span></h1>
 {% else %}
-<h1>Add Profile</h1>
+<h1 class='form-title'>Add Profile</h1>
 {% endif %}
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
+<div class="card">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
 
-    </table>
-    <input class="btn" type="submit" value='submit'>
-</form>
+        </table>
+        <input class="btn blue" type="submit" value='submit'>
+    </form>
 </div>
 
 {% endblock %}
